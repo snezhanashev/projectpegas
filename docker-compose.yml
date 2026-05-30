@@ -1,16 +1,17 @@
-version: '3.8'
 services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_DB: myapp
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+  app:
+    build:
+      context: ../
+      dockerfile: artifacts/Dockerfile
     ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
-
+      - "3000:3000"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - REDIS_HOST=cache
+      - NODE_ENV=production
+    depends_on:
+      - db
+      - cache
+    networks:
+      - pega-net
