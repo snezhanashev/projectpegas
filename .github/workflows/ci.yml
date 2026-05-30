@@ -43,3 +43,17 @@ jobs:
         run: npm ci
       - name: Run npm audit
         run: npm audit --production
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [lint, test, security-scan]
+    steps:
+      - name: Send Telegram notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            CI Pipeline ${{ job.status }} for PR #${{ github.event.pull_request.number }}
+            Job: ${{ github.job }}
+            Commit: ${{ github.sha }}
