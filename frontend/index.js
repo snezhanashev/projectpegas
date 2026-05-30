@@ -1,1 +1,1 @@
-console.log('Pegas');
+console.log('Pegas app is running');
