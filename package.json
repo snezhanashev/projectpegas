@@ -1,0 +1,11 @@
+{
+  "name": "pegas-project",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "echo 'No tests yet' && exit 0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
