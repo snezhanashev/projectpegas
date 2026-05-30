@@ -6,6 +6,5 @@
     "test": "echo 'No tests yet' && exit 0"
   },
   "devDependencies": {
-    "eslint": "^8.57.0"
   }
 }
